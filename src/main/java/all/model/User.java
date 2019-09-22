@@ -1,7 +1,7 @@
 package all.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
+
 
 @Entity
 @Table(name = "User")

@@ -51,46 +51,4 @@ public class UserServiceImpl implements UserService {
     }
 }
 
-//jdbc
-/*
-    private static UserServiceImpl userService;
 
-    private UserServiceImpl() {
-    }
-
-    public static UserServiceImpl getInstance() {
-        if (userService == null) {
-            userService = new UserServiceImpl();
-        }
-        return userService;
-    }
-
-    private UserDaoImpl getUserDao() {
-        return new UserDaoImpl(DBHelper.getConnection());
-    }
-
-    @Override
-    public void addUser(User user) {
-        getUserDao().addUser(user);
-    }
-
-    @Override
-    public List<User> getAllUsers() {
-        return getUserDao().getAllUsers();
-    }
-
-    @Override
-    public void updateUser(User user) {
-        getUserDao().updateUser(user);
-    }
-
-    @Override
-    public boolean isUser(Long id) {
-        return getUserDao().isUser(id);
-    }
-
-    @Override
-    public boolean deleteUser(Long id) {
-        return getUserDao().deleteUser(id);
-    }
-}*/
