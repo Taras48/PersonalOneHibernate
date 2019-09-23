@@ -1,11 +1,10 @@
 package all.service;
 
-import all.dao.UserDaoImpl;
-import all.dbHelper.DBHelper;
+import all.dao.UserDaoHider;
+import all.dbHelper.DBHelperHiber;
 import all.model.User;
 import org.hibernate.SessionFactory;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
@@ -20,34 +19,34 @@ public class UserServiceImpl implements UserService {
 
     public static UserServiceImpl getInstance() {
         if (userService == null) {
-            userService = new UserServiceImpl(DBHelper.getSessionFactory());
+            userService = new UserServiceImpl(DBHelperHiber.getSessionFactory());
         }
         return userService;
     }
 
     @Override
     public void addUser(User user) {
-        new UserDaoImpl(sessionFactory.openSession()).addUser(user);
+        new UserDaoHider(sessionFactory.openSession()).addUser(user);
     }
 
     @Override
     public List<User> getAllUsers() {
-        return new UserDaoImpl(sessionFactory.openSession()).getAllUsers();
+        return new UserDaoHider(sessionFactory.openSession()).getAllUsers();
     }
 
     @Override
     public void updateUser(User user) {
-        new UserDaoImpl(sessionFactory.openSession()).updateUser(user);
+        new UserDaoHider(sessionFactory.openSession()).updateUser(user);
     }
 
     @Override
     public boolean isUser(Long id) {
-        return  new UserDaoImpl(sessionFactory.openSession()).isUser(id);
+        return  new UserDaoHider(sessionFactory.openSession()).isUser(id);
     }
 
     @Override
     public void deleteUser(Long id) {
-          new UserDaoImpl(sessionFactory.openSession()).deleteUser(id);
+          new UserDaoHider(sessionFactory.openSession()).deleteUser(id);
     }
 }
 

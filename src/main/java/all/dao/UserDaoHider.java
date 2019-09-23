@@ -1,25 +1,23 @@
 package all.dao;
 
-import all.dbHelper.DBHelper;
+import all.dbHelper.DBHelperHiber;
 import all.model.User;
 import org.hibernate.Session;
 
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 
-public class UserDaoImpl implements UserDao {
+public class UserDaoHider implements UserDao {
 
     private Session session;
 
-    public UserDaoImpl(Session session) {
+    public UserDaoHider(Session session) {
         this.session = session;
     }
 
     @Override
     public List<User> getAllUsers() {
-        session = DBHelper.getSessionFactory().openSession();
+        session = DBHelperHiber.getSessionFactory().openSession();
         List<User> list = session.createQuery("FROM User").list();
         session.close();
         return list;
@@ -27,7 +25,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void addUser(User user) {
-        session = DBHelper.getSessionFactory().openSession();
+        session = DBHelperHiber.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(user);
         session.getTransaction().commit();
@@ -36,7 +34,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public boolean isUser(Long id) {
-        session = DBHelper.getSessionFactory().openSession();
+        session = DBHelperHiber.getSessionFactory().openSession();
         session.beginTransaction();
         User user = session.get(User.class,id);
         session.getTransaction().commit();
@@ -49,7 +47,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void updateUser(User user) {
-        session = DBHelper.getSessionFactory().openSession();
+        session = DBHelperHiber.getSessionFactory().openSession();
         session.beginTransaction();
         session.update(user);
         session.getTransaction().commit();
@@ -58,7 +56,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void deleteUser(Long id) {
-        session = DBHelper.getSessionFactory().openSession();
+        session = DBHelperHiber.getSessionFactory().openSession();
         session.beginTransaction();
         User user = session.get(User.class,id);
         session.delete(user);

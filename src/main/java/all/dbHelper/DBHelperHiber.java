@@ -12,7 +12,7 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBHelper {
+public class DBHelperHiber {
 
     private static SessionFactory sessionFactory;
 
