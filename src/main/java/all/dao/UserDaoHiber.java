@@ -7,11 +7,11 @@ import org.hibernate.Session;
 import java.util.List;
 
 
-public class UserDaoHider implements UserDao {
+public class UserDaoHiber implements UserDao {
 
     private Session session;
 
-    public UserDaoHider(Session session) {
+    public UserDaoHiber(Session session) {
         this.session = session;
     }
 
