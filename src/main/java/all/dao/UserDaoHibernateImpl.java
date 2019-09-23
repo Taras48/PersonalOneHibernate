@@ -3,21 +3,22 @@ package all.dao;
 import all.dbHelper.DBHelperHiber;
 import all.model.User;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import java.util.List;
 
 
-public class UserDaoHiber implements UserDao {
+public class UserDaoHibernateImpl implements UserDao {
 
-    private Session session;
+    private SessionFactory factory;
 
-    public UserDaoHiber(Session session) {
-        this.session = session;
+    public UserDaoHibernateImpl(SessionFactory factory ) {
+        this.factory = factory ;
     }
 
     @Override
     public List<User> getAllUsers() {
-        session = DBHelperHiber.getSessionFactory().openSession();
+        Session session = factory.openSession();
         List<User> list = session.createQuery("FROM User").list();
         session.close();
         return list;
@@ -25,7 +26,7 @@ public class UserDaoHiber implements UserDao {
 
     @Override
     public void addUser(User user) {
-        session = DBHelperHiber.getSessionFactory().openSession();
+        Session session = factory.openSession();
         session.beginTransaction();
         session.save(user);
         session.getTransaction().commit();
@@ -34,7 +35,7 @@ public class UserDaoHiber implements UserDao {
 
     @Override
     public boolean isUser(Long id) {
-        session = DBHelperHiber.getSessionFactory().openSession();
+        Session session = factory.openSession();
         session.beginTransaction();
         User user = session.get(User.class,id);
         session.getTransaction().commit();
@@ -47,7 +48,7 @@ public class UserDaoHiber implements UserDao {
 
     @Override
     public void updateUser(User user) {
-        session = DBHelperHiber.getSessionFactory().openSession();
+        Session session = factory.openSession();
         session.beginTransaction();
         session.update(user);
         session.getTransaction().commit();
@@ -56,7 +57,7 @@ public class UserDaoHiber implements UserDao {
 
     @Override
     public void deleteUser(Long id) {
-        session = DBHelperHiber.getSessionFactory().openSession();
+        Session session = factory.openSession();
         session.beginTransaction();
         User user = session.get(User.class,id);
         session.delete(user);

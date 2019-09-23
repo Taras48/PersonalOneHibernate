@@ -1,7 +1,9 @@
 package all.service;
 
-import all.dao.UserDaoHiber;
-import all.dao.UserDaoJdbc;
+import all.dao.UserDao;
+import all.dao.UserDaoFactory;
+import all.dao.UserDaoHibernateImpl;
+import all.dao.UserDaoJDBCimpl;
 import all.dbHelper.DBHelperHiber;
 import all.dbHelper.DBHelperJdbc;
 import all.model.User;
@@ -11,8 +13,10 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private static UserServiceImpl userService;
+    private UserDao connect;
 
     private UserServiceImpl() {
+        connect = new UserDaoFactory().create();
     }
 
     public static UserServiceImpl getInstance() {
@@ -21,38 +25,29 @@ public class UserServiceImpl implements UserService {
         }
         return userService;
     }
-
-    private UserDaoJdbc getUserDaoJdbc() {
-        return new UserDaoJdbc(DBHelperJdbc.getConnection());
-    }
-
-    private UserDaoHiber getUserDaoHiber() {
-        return new UserDaoHiber(DBHelperHiber.getSessionFactory().openSession());
-    }
-
     @Override
     public void addUser(User user) {
-        getUserDaoHiber().addUser(user);
+        connect.addUser(user);
     }
 
     @Override
     public List<User> getAllUsers() {
-        return getUserDaoHiber().getAllUsers();
+        return connect.getAllUsers();
     }
 
     @Override
     public void updateUser(User user) {
-        getUserDaoHiber().updateUser(user);
+        connect.updateUser(user);
     }
 
     @Override
     public boolean isUser(Long id) {
-        return getUserDaoHiber().isUser(id);
+        return connect.isUser(id);
     }
 
     @Override
     public void deleteUser(Long id) {
-        getUserDaoHiber().deleteUser(id);
+        connect.deleteUser(id);
     }
 }
 

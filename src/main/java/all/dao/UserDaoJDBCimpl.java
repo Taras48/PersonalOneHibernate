@@ -6,11 +6,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDaoJdbc implements UserDao {
+public class UserDaoJDBCimpl implements UserDao {
 
     private Connection connection;
 
-    public UserDaoJdbc(Connection connection) {
+    public UserDaoJDBCimpl(Connection connection) {
         this.connection = connection;
     }
 
@@ -83,10 +83,11 @@ public class UserDaoJdbc implements UserDao {
 
     @Override
     public void deleteUser(Long id) {
-        String sql = "delete from user where id = ?";
+        String sql = "delete from user where id=?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setLong(1, id);
+            st.executeUpdate();
         } catch (SQLException e) {
             System.out.println("erorr delet user");
         }
