@@ -6,11 +6,11 @@ import all.dbHelper.DBHelper;
 import java.io.*;
 import java.util.Scanner;
 
-public class UserDaoFactory {
-    private String getProperties() {
+public  class UserDaoFactory {
+    private static String getProperties() {
         String str = "";
         try (BufferedReader bufferedReader = new BufferedReader
-                (new FileReader("D:\\TARAZ\\Java\\Personal\\PersonalOne\\src\\main\\java\\all\\resources\\db.properties.txt"))) {
+                (new FileReader("db.properties"))) {
             str = bufferedReader.readLine();
 
         } catch (IOException e) {
@@ -19,7 +19,7 @@ public class UserDaoFactory {
         return str;
     }
 
-    public UserDao create() {
+    public UserDao getUserDao() {
         if (getProperties().contains("sql")) {
             return new UserDaoJDBCimpl(DBHelper.getInstance().getConnection());
         } else {

@@ -12,7 +12,7 @@ public class UserServiceImpl implements UserService {
     private UserDao connect;
 
     private UserServiceImpl() {
-        connect = new UserDaoFactory().create();
+        connect =  new UserDaoFactory().getUserDao();
     }
 
     public static UserServiceImpl getInstance() {
