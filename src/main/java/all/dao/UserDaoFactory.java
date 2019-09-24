@@ -7,15 +7,19 @@ import java.io.*;
 import java.util.Scanner;
 
 public  class UserDaoFactory {
+
     private static String getProperties() {
         String str = "";
-        try (BufferedReader bufferedReader = new BufferedReader
-                (new FileReader("db.properties"))) {
-            str = bufferedReader.readLine();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        InputStream fileReader = classLoader.getResourceAsStream("db.properties");
+        int i = -1;
+            try {
+                while ((i = fileReader.read()) != -1) {
+                    str += (char) i;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         return str;
     }
 
