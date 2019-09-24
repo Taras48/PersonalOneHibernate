@@ -2,10 +2,6 @@ package all.service;
 
 import all.dao.UserDao;
 import all.dao.UserDaoFactory;
-import all.dao.UserDaoHibernateImpl;
-import all.dao.UserDaoJDBCimpl;
-import all.dbHelper.DBHelperHiber;
-import all.dbHelper.DBHelperJdbc;
 import all.model.User;
 
 import java.util.List;

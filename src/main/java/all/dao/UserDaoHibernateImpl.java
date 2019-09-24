@@ -1,6 +1,5 @@
 package all.dao;
 
-import all.dbHelper.DBHelperHiber;
 import all.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
