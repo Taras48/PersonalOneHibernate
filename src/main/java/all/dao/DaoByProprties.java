@@ -1,8 +1,8 @@
 package all.dao;
 
-import all.dao.DaoFactory;
-import all.dao.DaoHibernateFactory;
-import all.dao.DaoJDBCFactory;
+import all.dao.Factorys.DaoFactory;
+import all.dao.Factorys.DaoHibernateFactory;
+import all.dao.Factorys.DaoJDBCFactory;
 
 import java.io.IOException;
 import java.io.InputStream;

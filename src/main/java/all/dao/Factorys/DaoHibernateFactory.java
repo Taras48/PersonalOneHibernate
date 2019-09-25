@@ -1,5 +1,7 @@
-package all.dao;
+package all.dao.Factorys;
 
+import all.dao.UserDao;
+import all.dao.UserDaoHibernateImpl;
 import all.dbHelper.DBHelper;
 
 public class DaoHibernateFactory implements DaoFactory {

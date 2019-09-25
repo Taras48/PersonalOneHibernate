@@ -1,6 +1,7 @@
 package all.service;
 
 import all.dao.*;
+import all.dao.Factorys.DaoFactory;
 import all.model.User;
 import all.dao.DaoByProprties;
 
