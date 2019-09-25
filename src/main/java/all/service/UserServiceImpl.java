@@ -1,40 +1,16 @@
 package all.service;
 
 import all.dao.*;
-import all.dbHelper.DBHelper;
 import all.model.User;
+import all.dao.DaoByProprties;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
     private static UserServiceImpl userService;
     private UserDao connect;
-    DaoFactory daoFactory = getConnectionByProperties();
-
-    private static DaoFactory getConnectionByProperties(){
-        //чтение из файла
-        String str = "";
-        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        InputStream fileReader = classLoader.getResourceAsStream("db.properties");
-        int i = -1;
-        try {
-            while ((i = fileReader.read()) != -1) {
-                str += (char) i;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        if (str.contains("jdbc")) {
-            return new DaoJDBCFactory();
-        } else {
-            return new DaoHibernateFactory();
-        }
-
-    }
+    DaoFactory daoFactory = DaoByProprties.getConnectionByProperties();
 
     private UserServiceImpl() {
         connect =  daoFactory.createUserDao();
