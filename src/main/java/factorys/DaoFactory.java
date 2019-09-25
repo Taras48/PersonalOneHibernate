@@ -1,4 +1,4 @@
-package all.dao.Factorys;
+package factorys;
 
 import all.dao.UserDao;
 
