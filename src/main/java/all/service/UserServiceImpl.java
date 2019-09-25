@@ -12,9 +12,9 @@ public class UserServiceImpl implements UserService {
 
     private static UserServiceImpl userService;
     private UserDao connect;
-    DaoFactory daoFactory = getConnectionByPropiterces();
+    DaoFactory daoFactory = getConnectionByProperties();
 
-    private static DaoFactory getConnectionByPropiterces(){
+    private static DaoFactory getConnectionByProperties(){
         //чтение из файла
         String str = "";
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
