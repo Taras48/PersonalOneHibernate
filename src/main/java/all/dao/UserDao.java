@@ -12,4 +12,5 @@ public interface UserDao {
     public void updateUser(User user);
     public void deleteUser(Long id);
     public User getUser(Long id);
+    public User getUser(String name, Long password);
 }

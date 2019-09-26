@@ -1,5 +1,6 @@
 package all.servlet;
 
+import all.model.User;
 import all.service.UserServiceImpl;
 
 import javax.servlet.ServletException;
@@ -16,8 +17,13 @@ public class FilterServlet extends HttpServlet {
         UserServiceImpl userService = UserServiceImpl.getInstance();
         String name = req.getParameter("name");
         Long password = Long.parseLong(req.getParameter("password"));
-        if(/*userService.getUser(name, password).getRole().equals("admin")*/false){
-            resp.sendRedirect("/admin");
+        User user = userService.getUser(name, password);
+        if(user != null){
+            if(user.getRole().equals("admin")){
+                resp.sendRedirect("/admin");
+            }else if(user.getRole().equals("user")){
+                resp.sendRedirect("/user");
+            }
         }else {
             resp.sendRedirect("/index");
         }

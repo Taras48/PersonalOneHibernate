@@ -85,6 +85,24 @@ public class UserDaoJDBCimpl implements UserDao {
     }
 
     @Override
+    public User getUser(String name, Long password) {
+        String sql = "select * from user where name = ? and password = ?";
+        User user = null;
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, name);
+            st.setLong(2, password);
+            ResultSet resultSet = st.executeQuery();
+            resultSet.next();
+            user = new User(resultSet.getLong("id"), resultSet.getString("name"),
+                    resultSet.getString("mail"), resultSet.getString("role"), resultSet.getLong("password"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+    @Override
     public void updateUser(User user) {
         String update = "update user set name = ?,mail = ?, role = ?, password = ? where id = ?";
         try {

@@ -1,6 +1,7 @@
 package all.dao;
 
 import all.model.User;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -71,6 +72,17 @@ public class UserDaoHibernateImpl implements UserDao {
         session.beginTransaction();
         User user = session.get(User.class,id);
         session.getTransaction().commit();
+        session.close();
+        return user;
+    }
+
+    @Override
+    public User getUser(String name, Long password) {
+        Session session = factory.openSession();
+        Query query = session.createQuery("from User where name = :name and password = :password");
+        query.setParameter("name", name);
+        query.setParameter("password", password);
+        User user = (User) query.uniqueResult();
         session.close();
         return user;
     }

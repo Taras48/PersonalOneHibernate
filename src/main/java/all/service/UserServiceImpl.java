@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(String name, Long password) {
-        return connect.getUser(password);
+        return connect.getUser(name, password);
     }
 }
 
