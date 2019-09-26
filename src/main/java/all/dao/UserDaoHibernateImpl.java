@@ -64,4 +64,14 @@ public class UserDaoHibernateImpl implements UserDao {
         session.close();
 
     }
+
+    @Override
+    public User getUser(Long id) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        User user = session.get(User.class,id);
+        session.getTransaction().commit();
+        session.close();
+        return user;
+    }
 }

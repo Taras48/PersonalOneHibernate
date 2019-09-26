@@ -27,7 +27,6 @@ public class UserAddServlet extends HttpServlet {
         String name = req.getParameter("name");
         String mail = req.getParameter("mail");
         String role = req.getParameter("role");
-       // String password = req.getParameter("password");
         Long password = Long.parseLong(req.getParameter("password"));
 
         if (name != null && mail != null) {

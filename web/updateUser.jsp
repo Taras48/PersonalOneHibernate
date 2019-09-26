@@ -12,7 +12,9 @@
 </head>
 <body>
 <p><a href="/add">Add User</a> |
-    <a href="/del">Delete User</a></p>
+    <a href="/del">Delete User</a>|
+    <a href="/user"> User</a>
+</p>
 <h3>Update User</h3>
 
 <form method="post" action="/update">

@@ -11,10 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/index")
-public class IndexServlet extends HttpServlet {
+@WebServlet("/admin")
+public class AdminServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
+        UserServiceImpl userService = UserServiceImpl.getInstance();
+        List<User> list = userService.getAllUsers();
+        req.setAttribute("list", list);
+       req.getRequestDispatcher("adminIndex.jsp").forward(req,resp);
     }
 }

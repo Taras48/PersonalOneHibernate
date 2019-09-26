@@ -12,7 +12,9 @@
 </head>
 <body>
 <p><a href="/update">Update User</a> |
-    <a href="/update">Update User</a>
+    <a href="/update">Update User</a>|
+    <a href="/user"> User</a>
+</p>
 <h3>Delete User</h3>
 
 <form  method="post" action="/del">
