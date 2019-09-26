@@ -16,10 +16,10 @@ public class FilterServlet extends HttpServlet {
         UserServiceImpl userService = UserServiceImpl.getInstance();
         String name = req.getParameter("name");
         Long password = Long.parseLong(req.getParameter("password"));
-        if(/*userService.getUser(name, password).getRole().equals("admin")*/true){
-            req.getRequestDispatcher("AdminServlet.jsp").forward(req, resp);
+        if(/*userService.getUser(name, password).getRole().equals("admin")*/false){
+            resp.sendRedirect("/admin");
         }else {
-            req.getRequestDispatcher("index.jsp").forward(req, resp);
+            resp.sendRedirect("/index");
         }
 
     }

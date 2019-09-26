@@ -33,6 +33,6 @@ public class UserUpdateServlet extends HttpServlet {
             userService.updateUser(new User(id, name, mail, role, password));
         }
 
-        resp.sendRedirect("/user");
+        resp.sendRedirect("/admin");
     }
 }

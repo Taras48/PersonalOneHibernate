@@ -28,6 +28,6 @@ public class UserDeleteServlet extends HttpServlet {
             userService.deleteUser(id);
         }
 
-        resp.sendRedirect("/user");
+        resp.sendRedirect("/admin");
     }
 }

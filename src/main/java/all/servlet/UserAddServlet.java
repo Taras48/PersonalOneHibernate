@@ -33,6 +33,6 @@ public class UserAddServlet extends HttpServlet {
            userService.addUser(new User(name, mail, role, password));
         }
 
-        resp.sendRedirect("/user");
+        resp.sendRedirect("/admin");
     }
 }
