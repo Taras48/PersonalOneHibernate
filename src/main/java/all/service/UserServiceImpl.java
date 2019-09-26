@@ -47,6 +47,11 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(Long id) {
         connect.deleteUser(id);
     }
+
+    @Override
+    public User getUser(String name, Long password) {
+        return connect.getUser(password);
+    }
 }
 
 

@@ -11,13 +11,13 @@
     <title>index</title>
 </head>
 <body>
-<form>
-    <form method="post"  action="/filter">
-        <p>Name: <input type="text" name="name">
+
+<form method="post" action="/filter">
+    <p>Name: <input type="text" name="name">
         Password <input type="password" name="password"></p>
-        <button >Send</button>
-    </form>
+    <button>Send</button>
 </form>
+
 
 </body>
 </html>

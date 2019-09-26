@@ -14,6 +14,13 @@ public class FilterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserServiceImpl userService = UserServiceImpl.getInstance();
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
+        String name = req.getParameter("name");
+        Long password = Long.parseLong(req.getParameter("password"));
+        if(/*userService.getUser(name, password).getRole().equals("admin")*/true){
+            req.getRequestDispatcher("AdminServlet.jsp").forward(req, resp);
+        }else {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        }
+
     }
 }
