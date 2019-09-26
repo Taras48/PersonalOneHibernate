@@ -17,6 +17,7 @@
 
 <form method="post"  action="/add">
     <p>Name: <input type="text" name="name"> Mail: <input type="text" name="mail"></p>
+    <p>Password: <input type="password" name="password"> Role: <input type="text" name="role"></p>
     <button >Add User</button>
 </form>
 

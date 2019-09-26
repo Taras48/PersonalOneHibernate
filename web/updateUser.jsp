@@ -19,6 +19,8 @@
     <p>Id for delete User: <input type="number" name="testId">
         NewName: <input type="text" name="newName">
         NewMail: <input type="text" name="newMail"></p>
+    <p>NewPassword: <input type="password" name="newPassword">
+        NewRole: <input type="text" name="newRole"></p>
     <button >Update User</button>
 </form>
 

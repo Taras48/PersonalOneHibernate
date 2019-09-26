@@ -4,7 +4,6 @@ import all.model.User;
 import all.service.UserServiceImpl;
 
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,9 +26,12 @@ public class UserAddServlet extends HttpServlet {
         UserServiceImpl userService = UserServiceImpl.getInstance();
         String name = req.getParameter("name");
         String mail = req.getParameter("mail");
+        String role = req.getParameter("role");
+       // String password = req.getParameter("password");
+        Long password = Long.parseLong(req.getParameter("password"));
 
         if (name != null && mail != null) {
-            userService.addUser(new User(name, mail));
+           userService.addUser(new User(name, mail, role, password));
         }
 
         resp.sendRedirect("/user");

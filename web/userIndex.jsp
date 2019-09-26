@@ -11,19 +11,23 @@
     <a href="/update">Update User</a> |
     <a href="/del">Delete User</a>
 </p>
-<h3>User Table</h3>
+<h3>User Table for Admin</h3>
 <c:if test="${list.size() > 0}">
     <table border="1px solid black">
         <tr>
             <td>Id</td>
             <td>Name</td>
             <td>Mail</td>
+            <td>Role</td>
+            <td>Password</td>
         </tr>
         <c:forEach var="user" items="${list}">
             <tr>
                 <td><c:out value="${user.getId()}"/></td>
                 <td><c:out value="${user.getName()}"/></td>
                 <td><c:out value="${user.getMail()}"/></td>
+                <td><c:out value="${user.getRole()}"/></td>
+                <td><c:out value="${user.getPassword()}"/></td>
             </tr>
         </c:forEach>
     </table>

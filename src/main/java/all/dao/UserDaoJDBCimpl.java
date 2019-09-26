@@ -17,11 +17,13 @@ public class UserDaoJDBCimpl implements UserDao {
     @Override
     public void addUser(User user) {
         createTable();
-        String sql = "insert user(name, mail) values (?, ?)";
+        String sql = "insert user(name, mail, role, password) values (?, ?, ?, ?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, user.getName());
             ps.setString(2, user.getMail());
+            ps.setString(3, user.getRole());
+            ps.setString(4, user.getPassword().toString());
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
@@ -34,13 +36,12 @@ public class UserDaoJDBCimpl implements UserDao {
         createTable();
         String sql = "select * from user";
         List<User> users = new ArrayList<User>();
-        // Statement st = null;
         try {
             Statement st = connection.createStatement();
             ResultSet resultSet = st.executeQuery(sql);
             while (resultSet.next()) {
                 User user = new User(resultSet.getLong("id"), resultSet.getString("name"),
-                        resultSet.getString("mail"));
+                        resultSet.getString("mail"), resultSet.getString("role"), resultSet.getLong("password"));
                 users.add(user);
             }
         } catch (SQLException e) {
@@ -68,12 +69,14 @@ public class UserDaoJDBCimpl implements UserDao {
 
     @Override
     public void updateUser(User user) {
-        String update = "update user set name = ?,mail = ? where id = ?";
+        String update = "update user set name = ?,mail = ?, role = ?, password = ? where id = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(update);
             ps.setString(1, user.getName());
             ps.setString(2, user.getMail());
-            ps.setLong(3, user.getId());
+            ps.setString(3, user.getRole());
+            ps.setString(4, user.getPassword().toString());
+            ps.setLong(5, user.getId());
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
@@ -95,7 +98,8 @@ public class UserDaoJDBCimpl implements UserDao {
 
     public void createTable() {
         try {
-            String sql = "create table if not exists user(id bigint auto_increment, name  varchar (30), mail varchar (80), primary key (id))";
+            String sql = "create table if not exists user(id bigint auto_increment, name  varchar (30), mail varchar (80)," +
+                    "role varchar (20), password bigint (30), primary key (id))";
             Statement statement = connection.createStatement();
             statement.execute(sql);
             statement.close();
