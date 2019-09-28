@@ -19,6 +19,6 @@ public class AdminServlet extends HttpServlet {
         UserServiceImpl userService = UserServiceImpl.getInstance();
         List<User> list = userService.getAllUsers();
         req.setAttribute("list", list);
-       req.getRequestDispatcher("adminIndex.jsp").forward(req,resp);
+        req.getRequestDispatcher("adminIndex.jsp").forward(req,resp);
     }
 }

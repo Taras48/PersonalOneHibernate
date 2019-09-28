@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/filter")
+@WebServlet("/filter")//переписать через фильтр
 public class FilterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -18,13 +18,13 @@ public class FilterServlet extends HttpServlet {
         String name = req.getParameter("name");
         Long password = Long.parseLong(req.getParameter("password"));
         User user = userService.getUser(name, password);
-        if(user != null){
-            if(user.getRole().equals("admin")){
+        if (user != null) {
+            if (user.getRole().equals("admin")) {
                 resp.sendRedirect("/admin");
-            }else if(user.getRole().equals("user")){
+            } else if (user.getRole().equals("user")) {
                 resp.sendRedirect("/user");
             }
-        }else {
+        } else {
             resp.sendRedirect("/index");
         }
 
