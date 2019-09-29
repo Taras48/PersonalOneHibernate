@@ -7,9 +7,9 @@
 </head>
 <body>
 <p>
-    <a href="/add">Add User</a> |
-    <a href="/update">Update User</a> |
-    <a href="/del">Delete User</a>|
+    <a href="/admin/add">Add User</a> |
+    <a href="/admin/update">Update User</a> |
+    <a href="/admin/del">Delete User</a>|
     <a href="/user"> User</a>
 </p>
 <h3>User Table for Admin</h3>

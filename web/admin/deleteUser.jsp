@@ -11,13 +11,13 @@
     <title>Delete User</title>
 </head>
 <body>
-<p><a href="/update">Update User</a> |
-    <a href="/update">Update User</a>|
+<p><a href="/admin/add">Add User</a> |
+    <a href="/admin/update">Update User</a>|
     <a href="/user"> User</a>
 </p>
 <h3>Delete User</h3>
 
-<form  method="post" action="/del">
+<form  method="post" action="/admin/del">
     <p>Id for delete User: <input type="number" name="id"></p>
     <button >Delete User</button>
 </form>

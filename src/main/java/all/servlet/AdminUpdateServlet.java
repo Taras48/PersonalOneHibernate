@@ -13,24 +13,24 @@ import java.io.IOException;
 import java.util.List;
 
 
-@WebServlet("/add")
-public class UserAddServlet extends HttpServlet {
+@WebServlet("/admin/update")
+public class AdminUpdateServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("addUser.jsp").forward(req, resp);
+        req.getRequestDispatcher("updateUser.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserServiceImpl userService = UserServiceImpl.getInstance();
-        String name = req.getParameter("name");
-        String mail = req.getParameter("mail");
-        String role = req.getParameter("role");
-        Long password = Long.parseLong(req.getParameter("password"));
-
-        if (name != null && mail != null) {
-           userService.addUser(new User(name, mail, role, password));
+        String name = req.getParameter("newName");
+        String mail = req.getParameter("newMail");
+        String role = req.getParameter("newRole");
+        Long password = Long.parseLong(req.getParameter("newPassword"));
+        Long id = Long.parseLong(req.getParameter("testId"));
+        if (userService.isUser(id)) {
+            userService.updateUser(new User(id, name, mail, role, password));
         }
 
         resp.sendRedirect("/admin");

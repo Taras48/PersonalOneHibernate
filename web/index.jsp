@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form method="post" action="/filter">
+<form method="post" action="/index">
     <p>Name: <input type="text" name="name">
         Password <input type="password" name="password"></p>
     <button>Send</button>

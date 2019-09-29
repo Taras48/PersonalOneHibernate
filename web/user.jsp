@@ -12,6 +12,7 @@
 </head>
 <body>
 <h3>User Page</h3>
+<p>Hello ${name}</p>
 
 </body>
 </html>

@@ -11,13 +11,13 @@
     <title>Update User</title>
 </head>
 <body>
-<p><a href="/add">Add User</a> |
-    <a href="/del">Delete User</a>|
+<p><a href="/admin/add">Add User</a> |
+    <a href="/admin/del">Delete User</a>|
     <a href="/user"> User</a>
 </p>
 <h3>Update User</h3>
 
-<form method="post" action="/update">
+<form method="post" action="/admin/update">
     <p>Id for delete User: <input type="number" name="testId">
         NewName: <input type="text" name="newName">
         NewMail: <input type="text" name="newMail"></p>

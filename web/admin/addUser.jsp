@@ -11,12 +11,12 @@
     <title>User Add</title>
 </head>
 <body>
-<p><a href="/update">Update User</a> |
-    <a href="/del">Delete User</a>|
+<p><a href="/admin/update">Update User</a> |
+    <a href="/admin/del">Delete User</a>|
 <a href="/user"> User</a></p>
 <h3>User Add</h3>
 
-<form method="post"  action="/add">
+<form method="post"  action="/admin/add">
     <p>Name: <input type="text" name="name"> Mail: <input type="text" name="mail"></p>
     <p>Password: <input type="password" name="password"> Role: <input type="text" name="role"></p>
     <button >Add User</button>
