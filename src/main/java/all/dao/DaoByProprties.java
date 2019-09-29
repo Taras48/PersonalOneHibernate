@@ -10,17 +10,16 @@ import java.util.Properties;
 
 public class DaoByProprties {
     public static DaoFactory getConnectionByProperties() {
-        String db = "";
+        Properties properties = new Properties();
         try {
             ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
             InputStream fileReader = classLoader.getResourceAsStream("db.properties");
-            Properties properties = new Properties();
+            properties = new Properties();
             properties.load(fileReader);
-            db = properties.getProperty("db");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (db.contains("jdbc")) {
+        if (properties.getProperty("db").contains("jdbc")) {
             return new DaoJDBCFactory();
         } else {
             return new DaoHibernateFactory();
